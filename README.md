@@ -1,11 +1,3 @@
-# Index
-
-1. [ProtoBuffer](#ProtoBuffer)
-2. [Nuget](#Nuget)
-3. [Usage](#Usage)
-4. [Methods](#Methods)
-5. [License](#License)
-
 # ProtoBuffer
 
 A simple wrapper library for **[protobuf-net](https://github.com/mgravell/protobuf-net)** with async, gzip and
