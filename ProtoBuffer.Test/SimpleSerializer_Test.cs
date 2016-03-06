@@ -39,7 +39,7 @@ namespace ProtoBuffer.Test
 
 
         [Test]
-        public void Given_an_object_Then_get_its_protobuf_string_serialize()
+        public void Given_an_object_Then_get_its_protobuf_serialize()
         {
             byte[] serialized = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract());
 
@@ -48,7 +48,7 @@ namespace ProtoBuffer.Test
 
 
         [Test]
-        public void Given_an_object_Then_get_its_protobuf_string_serialization_in_file()
+        public void Given_an_object_Then_get_its_protobuf_serialization_in_file()
         {
             string path = "ob.bin";
 
@@ -61,7 +61,7 @@ namespace ProtoBuffer.Test
 
 
         [Test]
-        public async Task Given_object_Then_get_its_protobuf_string_serialize_async()
+        public async Task Given_object_Then_get_its_protobuf_serialize_async()
         {
             byte[] serialized = await _simpleSerializer.ToByteArrayAsync(GetObjectWithProtobufContract());
 
@@ -69,7 +69,7 @@ namespace ProtoBuffer.Test
         }
 
         [Test]
-        public async Task Given_an_object_Then_get_its_protobuf_string_serialization_in_file_async()
+        public async Task Given_an_object_Then_get_its_protobuf_serialization_in_file_async()
         {
             string path = "ob.bin";
 
