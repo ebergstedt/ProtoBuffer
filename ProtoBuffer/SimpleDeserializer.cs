@@ -58,15 +58,7 @@ namespace ProtoBuffer
                 }
 
                 return Serializer.Deserialize<T>(ms);
-            }            
-
-            //using (MemoryStream stream = new MemoryStream())
-            //{                
-            //    stream.Write(value, 0, value.Length);
-            //    stream.Position = 0;
-
-            //    return Serializer.Deserialize<T>(stream);
-            //}
+            }
         }
     }
 }
