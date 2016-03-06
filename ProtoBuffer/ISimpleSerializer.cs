@@ -9,24 +9,24 @@ namespace ProtoBuffer
 {
     public interface ISimpleSerializer
     {
+        string SaveToFile(
+                          [NotNull] object item,
+                          [NotNull] string filePath,
+                          bool overWriteExistingFile = false,
+                          bool gzipCompress = false);
+
         Task<string> SaveToFileAsync(
                                      [NotNull] object item, 
                                      [NotNull] string filePath, 
-                                     [NotNull] bool overWriteExistingFile = false, 
-                                     [NotNull] bool gzipCompress = false);
-
-        Task<byte[]> ToByteArrayAsync(
-                                      [NotNull] object item,
-                                      [NotNull] bool gzipCompress = false);
-
-        string SaveToFile(
-                          [NotNull] object item, 
-                          [NotNull] string filePath, 
-                          [NotNull] bool overWriteExistingFile = false, 
-                          [NotNull] bool gzipCompress = false);
+                                     bool overWriteExistingFile = false, 
+                                     bool gzipCompress = false);
 
         byte[] ToByteArray(
                            [NotNull] object item,
-                           [NotNull] bool gzipCompress = false);
+                           bool gzipCompress = false);
+
+        Task<byte[]> ToByteArrayAsync(
+                                      [NotNull] object item,
+                                      bool gzipCompress = false);        
     }
 }

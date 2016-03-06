@@ -7,18 +7,18 @@ namespace ProtoBuffer
     {
         T FromFile<T>(
                       [NotNull] string filePath, 
-                      [NotNull] bool gzipDecompress = false);
+                      bool gzipDecompress = false);
 
         Task<T> FromFileAsync<T>(
                                  [NotNull] string filePath,
-                                 [NotNull] bool gzipDecompress = false);
+                                 bool gzipDecompress = false);
 
         T FromByteArray<T>(
                            [NotNull] byte[] value,
-                           [NotNull] bool gzipDecompress = false);
+                           bool gzipDecompress = false);
 
         Task<T> FromByteArrayAsync<T>(
                                       [NotNull] byte[] value,
-                                      [NotNull] bool gzipDecompress = false);
+                                      bool gzipDecompress = false);
     }
 }
