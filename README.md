@@ -1,6 +1,9 @@
 # ProtoBuffer
 
-A simple wrapper library for **[protobuf-net](https://github.com/mgravell/protobuf-net)** with async functionality and less boilerplate.
+A simple wrapper library for **[protobuf-net](https://github.com/mgravell/protobuf-net)** with async functionality, gzip and
+less boilerplate.
+
+**ProtoBuffer** will remove some repetitive code declarations, like streams initializations and reading. It supports object to byte array or to file, with serialization and deserialization. It can also employ **gzip**. Just remember to keep track on which objects are gzipped or not when you deserialize them.
 
 # Usage
 
@@ -13,20 +16,6 @@ The test files are self-explanatory. Click below to go to the test files.
 Here is a sample:
 
 ```C#
-private Person GetPerson()
-{
-    return new Person
-    {
-        Id = 12345,
-        Name = "Fred",
-        Address = new Address
-        {
-            Line1 = "Flat 1",
-            Line2 = "The Meadows"
-        }
-    };
-}
-
 [Test]
 public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 {
@@ -42,29 +31,43 @@ public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 
 ## Protobuffer.SimpleSerializer
 ```C#
-Task<string> SaveToFileAsync(
-                             [NotNull] object item, 
-                             [NotNull] string filePath, 
-                             [NotNull] bool overWriteExistingFile = false);
-
-Task<byte[]> ToByteArrayAsync([NotNull] object item);
-
 string SaveToFile(
-                  [NotNull] object item, 
-                  [NotNull] string filePath, 
-                  [NotNull] bool overWriteExistingFile = false);
+				  [NotNull] object item,
+				  [NotNull] string filePath,
+				  bool overWriteExistingFile = false,
+				  bool gzipCompress = false);
 
-byte[] ToByteArray([NotNull] object item);
+Task<string> SaveToFileAsync(
+							 [NotNull] object item, 
+							 [NotNull] string filePath, 
+							 bool overWriteExistingFile = false, 
+							 bool gzipCompress = false);
+
+byte[] ToByteArray(
+				   [NotNull] object item,
+				   bool gzipCompress = false);
+
+Task<byte[]> ToByteArrayAsync(
+							  [NotNull] object item,
+							  bool gzipCompress = false);        
 ```
 
 ## Protobuffer.SimpleDeserializer
 ```C#
-T FromFile<T>([NotNull] string filePath);
+T FromFile<T>(
+			  [NotNull] string filePath, 
+			  bool gzipDecompress = false);
 
-Task<T> FromFileAsync<T>([NotNull] string filePath);
+Task<T> FromFileAsync<T>(
+						 [NotNull] string filePath,
+						 bool gzipDecompress = false);
 
-T FromByteArray<T>([NotNull] byte[] value);
+T FromByteArray<T>(
+				   [NotNull] byte[] value,
+				   bool gzipDecompress = false);
 
-Task<T> FromByteArrayAsync<T>([NotNull] byte[] value);
+Task<T> FromByteArrayAsync<T>(
+							  [NotNull] byte[] value,
+							  bool gzipDecompress = false);
 ```
 
