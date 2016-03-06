@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Containers.cs" />
+    <Compile Include="SimpleDeserializer_Test.cs" />
     <Compile Include="SimpleSerializer_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

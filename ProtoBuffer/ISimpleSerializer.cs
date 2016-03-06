@@ -11,14 +11,16 @@ namespace ProtoBuffer
     {
         Task<string> SaveToFileAsync(
                                      [NotNull] object item, 
-                                     [NotNull] string filePath);
+                                     [NotNull] string filePath, 
+                                     [NotNull] bool overWriteExistingFile = false);
 
-        Task<string> ToStringAsync([NotNull] object item);
+        Task<byte[]> ToByteArrayAsync([NotNull] object item);
 
         string SaveToFile(
-                          [NotNull] object item,
-                          [NotNull] string filePath);
+                          [NotNull] object item, 
+                          [NotNull] string filePath, 
+                          [NotNull] bool overWriteExistingFile = false);
 
-        string ToString([NotNull] object item);
+        byte[] ToByteArray([NotNull] object item);
     }
 }

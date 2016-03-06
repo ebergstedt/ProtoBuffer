@@ -39,9 +39,9 @@ namespace ProtoBuffer.Test
 
 
         [Test]
-        public void Given_an_object_Then_get_its_protobuf_string_serialization()
+        public void Given_an_object_Then_get_its_protobuf_string_serialize()
         {
-            string serialized = _simpleSerializer.ToString(GetObjectWithProtobufContract());
+            byte[] serialized = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract());
 
             Assert.NotNull(serialized);
         }
@@ -61,9 +61,9 @@ namespace ProtoBuffer.Test
 
 
         [Test]
-        public async Task Given_object_Then_get_its_protobuf_string_serialization_async()
+        public async Task Given_object_Then_get_its_protobuf_string_serialize_async()
         {
-            string serialized = await _simpleSerializer.ToStringAsync(GetObjectWithProtobufContract());
+            byte[] serialized = await _simpleSerializer.ToByteArrayAsync(GetObjectWithProtobufContract());
 
             Assert.NotNull(serialized);
         }
