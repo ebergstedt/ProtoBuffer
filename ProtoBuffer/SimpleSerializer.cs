@@ -9,7 +9,7 @@ namespace ProtoBuffer
 {
     public class SimpleSerializer : ISimpleSerializer
     {
-        private static readonly int GZIP_BUFFER_SIZE = 64*1024;
+        private const int GZIP_BUFFER_SIZE = 64*1024;
 
         /// <summary>
         ///     Saves item to file
