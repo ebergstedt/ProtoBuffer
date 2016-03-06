@@ -28,7 +28,7 @@ private Person GetObjectWithProtobufContract()
 }
 
 [Test]
-public void Given_an_object_Then_protobuf_string_serialize_and_deseserialize()
+public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 {
     var serialize = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract());
 
