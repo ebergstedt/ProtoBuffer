@@ -1,6 +1,6 @@
 # ProtoBuffer
 
-A simple wrapper library for **[protobuf-net](https://github.com/mgravell/protobuf-net)** with async functionality, gzip and
+A simple wrapper library for **[protobuf-net](https://github.com/mgravell/protobuf-net)** with async, gzip and
 less boilerplate.
 
 **ProtoBuffer** will remove some repetitive code declarations, like streams initializations and reading. It supports object to byte array or to file, with serialization and deserialization. It can also employ **gzip**. Just remember to keep track on which objects are gzipped or not when you deserialize them.
