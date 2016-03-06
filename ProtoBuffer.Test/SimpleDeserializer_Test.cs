@@ -53,7 +53,7 @@ namespace ProtoBuffer.Test
         [Test]
         public void Given_an_object_Then_get_its_protobuf_serialization_in_file_Then_deserialize_it()
         {
-            string path = "ob.bin";
+            string path = "ob1.bin";
 
             _simpleSerializer.SaveToFile(GetObjectWithProtobufContract(), path);
 
@@ -75,7 +75,7 @@ namespace ProtoBuffer.Test
         [Test]
         public async Task Given_an_object_Then_get_its_protobuf_serialization_file_Then_deserialize_it_async()
         {
-            string path = "ob.bin";
+            string path = "ob2.bin";
 
             await _simpleSerializer.SaveToFileAsync(GetObjectWithProtobufContract(), path);
 
