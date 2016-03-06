@@ -45,7 +45,7 @@ namespace ProtoBuffer.Test
         {
             var serialize = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract());
 
-            var deserialize = _simpleDeserializer.FromByteArray<Person>(serialize);
+            Person deserialize = _simpleDeserializer.FromByteArray<Person>(serialize);
 
             Assert.NotNull(deserialize);
         }
