@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoBuffer", "ProtoBuffer\ProtoBuffer.csproj", "{2D4B1F1A-373E-4B68-A1BC-28DE222AE185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtoBuffer.Test", "ProtoBuffer.Test\ProtoBuffer.Test.csproj", "{1755B4CF-60FB-47D4-9BD9-EA9C8E60484D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D4B1F1A-373E-4B68-A1BC-28DE222AE185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4B1F1A-373E-4B68-A1BC-28DE222AE185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4B1F1A-373E-4B68-A1BC-28DE222AE185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4B1F1A-373E-4B68-A1BC-28DE222AE185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1755B4CF-60FB-47D4-9BD9-EA9C8E60484D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1755B4CF-60FB-47D4-9BD9-EA9C8E60484D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1755B4CF-60FB-47D4-9BD9-EA9C8E60484D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1755B4CF-60FB-47D4-9BD9-EA9C8E60484D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
