@@ -35,24 +35,26 @@ namespace ProtoBuffer.Test
                     Line2 = "The Meadows"
                 }
             };
-        }        
+        }
 
 
-        [Test]
-        public void Given_an_object_Then_get_its_protobuf_serialize()
+        [TestCase(false)]
+        [TestCase(true)]
+        public void Given_an_object_Then_get_its_protobuf_serialize(bool useGzip)
         {
-            byte[] serialized = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract());            
+            byte[] serialized = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract(), gzipCompress: useGzip);            
 
             Assert.NotNull(serialized);
         }
 
 
-        [Test]
-        public void Given_an_object_Then_get_its_protobuf_serialization_in_file()
+        [TestCase(false)]
+        [TestCase(true)]
+        public void Given_an_object_Then_get_its_protobuf_serialization_in_file(bool useGzip)
         {
             string path = "ob5.bin";
 
-            _simpleSerializer.SaveToFile(GetObjectWithProtobufContract(), path);
+            _simpleSerializer.SaveToFile(GetObjectWithProtobufContract(), path, gzipCompress: useGzip);
 
             var readAllText = File.ReadAllText(path);
 
@@ -60,20 +62,22 @@ namespace ProtoBuffer.Test
         }
 
 
-        [Test]
-        public async Task Given_object_Then_get_its_protobuf_serialize_async()
+        [TestCase(false)]
+        [TestCase(true)]
+        public async Task Given_object_Then_get_its_protobuf_serialize_async(bool useGzip)
         {
-            byte[] serialized = await _simpleSerializer.ToByteArrayAsync(GetObjectWithProtobufContract());
+            byte[] serialized = await _simpleSerializer.ToByteArrayAsync(GetObjectWithProtobufContract(), gzipCompress: useGzip);
 
             Assert.NotNull(serialized);
         }
 
-        [Test]
-        public async Task Given_an_object_Then_get_its_protobuf_serialization_in_file_async()
+        [TestCase(false)]
+        [TestCase(true)]
+        public async Task Given_an_object_Then_get_its_protobuf_serialization_in_file_async(bool useGzip)
         {
             string path = "ob4.bin";
 
-            await _simpleSerializer.SaveToFileAsync(GetObjectWithProtobufContract(), path);
+            await _simpleSerializer.SaveToFileAsync(GetObjectWithProtobufContract(), path, gzipCompress: useGzip);
 
             var readAllText = File.ReadAllText(path);
 
