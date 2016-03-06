@@ -13,7 +13,7 @@ The test files are self-explanatory. Click below to go to the test files.
 Here is a sample:
 
 ```C#
-private Person GetObjectWithProtobufContract()
+private Person GetPerson()
 {
     return new Person
     {
@@ -30,7 +30,7 @@ private Person GetObjectWithProtobufContract()
 [Test]
 public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 {
-    var serialize = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract());
+    var serialize = _simpleSerializer.ToByteArray(GetPerson());
 
     Person deserialize = _simpleDeserializer.FromByteArray<Person>(serialize);
 
