@@ -5,6 +5,10 @@ less boilerplate.
 
 **ProtoBuffer** will remove some repetitive code declarations, like streams initializations and reading. It supports object to byte array or to file, with serialization and deserialization. It can also employ **gzip**. Just remember to keep track on which objects are gzipped or not when you deserialize them.
 
+# Nuget
+
+    PM> Install-Package ProtoBuffer
+
 # Usage
 
 The test files are self-explanatory. Click below to go to the test files.
