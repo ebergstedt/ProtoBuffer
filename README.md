@@ -75,6 +75,16 @@ Task<T> FromByteArrayAsync<T>(
 							  bool gzipDecompress = false);
 ```
 
+# Helpful links
+
+**[Protobuf-net: the unofficial manual](http://www.codeproject.com/Articles/642677/Protobuf-net-the-unofficial-manual)**
+
+**[Google ProtoBuf documentation](https://developers.google.com/protocol-buffers/docs/overview)**
+
+**[ProtoBuf vs Json vs XML](http://stackoverflow.com/questions/14028293/google-protocol-buffers-vs-json-vs-xml)**
+
+
+
 # License
 
 The MIT License (MIT)
