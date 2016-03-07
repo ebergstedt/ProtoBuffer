@@ -17,13 +17,13 @@ namespace ProtoBuffer
         /// <param name="item">Item to be saved</param>
         /// <param name="filePath">Destination filepath</param>
         /// <param name="overWriteExistingFile"></param>
-        /// <param name="gzipCompress"></param>
+        /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>Saved filepath</returns>
         public async Task<string> SaveToFileAsync(
                                                   [NotNull] object item,
                                                   [NotNull] string filePath,
-                                                  [NotNull] bool overWriteExistingFile = false,
-                                                  [NotNull] bool gzipCompress = false)
+                                                  bool overWriteExistingFile = false,
+                                                  bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
@@ -42,11 +42,11 @@ namespace ProtoBuffer
         ///     Transforms item to protobuf string
         /// </summary>
         /// <param name="item">Item to be serialized</param>
-        /// <param name="gzipCompress"></param>
+        /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>String serialization of the item</returns>
         public async Task<byte[]> ToByteArrayAsync(
                                                    [NotNull] object item, 
-                                                   [NotNull] bool gzipCompress = false)
+                                                   bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
@@ -60,13 +60,13 @@ namespace ProtoBuffer
         /// <param name="item">Item to be saved</param>
         /// <param name="filePath">Destination filepath</param>
         /// <param name="overWriteExistingFile"></param>
-        /// <param name="gzipCompress"></param>
+        /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>Saved filepath</returns>
         public string SaveToFile(
                                  [NotNull] object item,
                                  [NotNull] string filePath,
-                                 [NotNull] bool overWriteExistingFile = false,
-                                 [NotNull] bool gzipCompress = false)
+                                 bool overWriteExistingFile = false,
+                                 bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
@@ -89,11 +89,11 @@ namespace ProtoBuffer
         ///     Transforms item to protobuf string
         /// </summary>
         /// <param name="item">Item to be serialized</param>
-        /// <param name="gzipCompress"></param>
+        /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>String serialization of the item</returns>
         public byte[] ToByteArray(
                                   [NotNull] object item,
-                                  [NotNull] bool gzipCompress = false)
+                                  bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 

@@ -8,28 +8,17 @@ using ProtoBuf;
 namespace ProtoBuffer
 {
     public class SimpleDeserializer : ISimpleDeserializer
-    {
-        public async Task<T> FromFileAsync<T>(
-                                              [NotNull] string filePath,
-                                              [NotNull] bool gzipDecompress = false)
-        {
-            if (filePath == null) throw new ArgumentNullException(nameof(filePath));
-
-            return await Task.Run(() => FromFile<T>(filePath, gzipDecompress));
-        }
-
-        public async Task<T> FromByteArrayAsync<T>(
-                                                   [NotNull] byte[] value,
-                                                   [NotNull] bool gzipDecompress = false)
-        {
-            if (value == null) throw new ArgumentNullException(nameof(value));
-
-            return await Task.Run(() => FromByteArray<T>(value, gzipDecompress));
-        }
-
+    {        
+        /// <summary>
+        ///     Deserializes from file
+        /// </summary>
+        /// <typeparam name="T">Type to deserialize into</typeparam>
+        /// <param name="filePath">Filepath for deserialization</param>
+        /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
+        /// <returns>File deserialized into type</returns>
         public T FromFile<T>(
                              [NotNull] string filePath,
-                             [NotNull] bool gzipDecompress = false)
+                             bool gzipDecompress = false)
         {
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 
@@ -38,9 +27,32 @@ namespace ProtoBuffer
             return FromByteArray<T>(readAllBytes, gzipDecompress);
         }
 
+        /// <summary>
+        ///     Deserializes from file
+        /// </summary>
+        /// <typeparam name="T">Type to deserialize into</typeparam>
+        /// <param name="filePath">Filepath for deserialization</param>
+        /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
+        /// <returns>File deserialized into type</returns>
+        public async Task<T> FromFileAsync<T>(
+                                              [NotNull] string filePath,
+                                              bool gzipDecompress = false)
+        {
+            if (filePath == null) throw new ArgumentNullException(nameof(filePath));
+
+            return await Task.Run(() => FromFile<T>(filePath, gzipDecompress));
+        }
+
+        /// <summary>
+        ///     Deserializes from byte array
+        /// </summary>
+        /// <typeparam name="T">Type to deserialize into</typeparam>
+        /// <param name="value">Byte-array to be deserialized</param>
+        /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
+        /// <returns>Byte-array deserialized into type</returns>
         public T FromByteArray<T>(
                                   [NotNull] byte[] value,
-                                  [NotNull] bool gzipDecompress = false)
+                                  bool gzipDecompress = false)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -56,6 +68,22 @@ namespace ProtoBuffer
 
                 return Serializer.Deserialize<T>(ms);
             }
+        }
+
+        /// <summary>
+        ///     Deserializes from byte array
+        /// </summary>
+        /// <typeparam name="T">Type to deserialize into</typeparam>
+        /// <param name="value">Byte-array to be deserialized</param>
+        /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
+        /// <returns>Byte-array deserialized into type</returns>
+        public async Task<T> FromByteArrayAsync<T>(
+                                                   [NotNull] byte[] value,
+                                                   bool gzipDecompress = false)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+
+            return await Task.Run(() => FromByteArray<T>(value, gzipDecompress));
         }
     }
 }
