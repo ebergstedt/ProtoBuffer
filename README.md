@@ -5,6 +5,8 @@ less boilerplate.
 
 **ProtoBuffer** will remove some repetitive code declarations, like streams initializations and reading. It supports object to byte array or to file, with serialization and deserialization. It can also employ **gzip**. Just remember to keep track on which objects are gzipped or not when you deserialize them.
 
+[Performance report](https://github.com/sidshetye/SerializersCompare) for ProtoBuf shows that it's one of the fastest serializers for C#. But what ProtoBuf is designed for is unprecedented speed of deserialization, with a very compact format. This makes it a prime candidate for your caching solution, such as using Redis together with ProtoBuf for extremely fast data transfer and deserialization. This is as of 2016 the solution deployed in production at Stack Overflow.
+
 # Nuget
 
     PM> Install-Package ProtoBuffer
