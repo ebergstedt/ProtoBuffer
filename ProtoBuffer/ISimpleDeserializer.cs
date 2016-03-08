@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 
 namespace ProtoBuffer
 {
@@ -9,16 +8,8 @@ namespace ProtoBuffer
                       [NotNull] string filePath, 
                       bool gzipDecompress = false);
 
-        Task<T> FromFileAsync<T>(
-                                 [NotNull] string filePath,
-                                 bool gzipDecompress = false);
-
         T FromByteArray<T>(
                            [NotNull] byte[] value,
                            bool gzipDecompress = false);
-
-        Task<T> FromByteArrayAsync<T>(
-                                      [NotNull] byte[] value,
-                                      bool gzipDecompress = false);
     }
 }

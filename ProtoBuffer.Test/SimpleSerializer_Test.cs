@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using ProtoBuf;
 using System.Xml;
@@ -55,29 +54,6 @@ namespace ProtoBuffer.Test
             string path = "ob5.bin";
 
             _simpleSerializer.SaveToFile(GetObjectWithProtobufContract(), path, gzipCompress: useGzip);
-
-            var readAllText = File.ReadAllText(path);
-
-            Assert.NotNull(readAllText);
-        }
-
-
-        [TestCase(false)]
-        [TestCase(true)]
-        public async Task Given_object_Then_get_its_protobuf_serialize_async(bool useGzip)
-        {
-            byte[] serialized = await _simpleSerializer.ToByteArrayAsync(GetObjectWithProtobufContract(), gzipCompress: useGzip);
-
-            Assert.NotNull(serialized);
-        }
-
-        [TestCase(false)]
-        [TestCase(true)]
-        public async Task Given_an_object_Then_get_its_protobuf_serialization_in_file_async(bool useGzip)
-        {
-            string path = "ob4.bin";
-
-            await _simpleSerializer.SaveToFileAsync(GetObjectWithProtobufContract(), path, gzipCompress: useGzip);
 
             var readAllText = File.ReadAllText(path);
 
