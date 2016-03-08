@@ -40,13 +40,13 @@ public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 string SaveToFile(
 				  [NotNull] object item,
 				  [NotNull] string filePath,
-				  bool overWriteExistingFile = false,
+				  FileMode fileMode = FileMode.Create,
 				  bool gzipCompress = false);
 
 Task<string> SaveToFileAsync(
 							 [NotNull] object item, 
 							 [NotNull] string filePath, 
-							 bool overWriteExistingFile = false, 
+							 FileMode fileMode = FileMode.Create,
 							 bool gzipCompress = false);
 
 byte[] ToByteArray(
