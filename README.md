@@ -52,10 +52,7 @@ Task<string> SaveToFileAsync(
 byte[] ToByteArray(
 				   [NotNull] object item,
 				   bool gzipCompress = false);
-
-Task<byte[]> ToByteArrayAsync(
-							  [NotNull] object item,
-							  bool gzipCompress = false);        
+     
 ```
 
 ## Protobuffer.SimpleDeserializer
@@ -72,9 +69,6 @@ T FromByteArray<T>(
 				   [NotNull] byte[] value,
 				   bool gzipDecompress = false);
 
-Task<T> FromByteArrayAsync<T>(
-							  [NotNull] byte[] value,
-							  bool gzipDecompress = false);
 ```
 
 # Helpful links
