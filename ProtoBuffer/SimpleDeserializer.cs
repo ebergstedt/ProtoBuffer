@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using ProtoBuf;
 
@@ -25,22 +24,6 @@ namespace ProtoBuffer
             var readAllBytes = File.ReadAllBytes(filePath);
 
             return FromByteArray<T>(readAllBytes, gzipDecompress);
-        }
-
-        /// <summary>
-        ///     Deserializes from file
-        /// </summary>
-        /// <typeparam name="T">Type to deserialize into</typeparam>
-        /// <param name="filePath">Filepath for deserialization</param>
-        /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
-        /// <returns>File deserialized into type</returns>
-        public async Task<T> FromFileAsync<T>(
-                                              [NotNull] string filePath,
-                                              bool gzipDecompress = false)
-        {
-            if (filePath == null) throw new ArgumentNullException(nameof(filePath));
-
-            return await Task.Run(() => FromFile<T>(filePath, gzipDecompress));
         }
 
         /// <summary>
@@ -68,22 +51,6 @@ namespace ProtoBuffer
 
                 return Serializer.Deserialize<T>(ms);
             }
-        }
-
-        /// <summary>
-        ///     Deserializes from byte array
-        /// </summary>
-        /// <typeparam name="T">Type to deserialize into</typeparam>
-        /// <param name="value">Byte-array to be deserialized</param>
-        /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
-        /// <returns>Byte-array deserialized into type</returns>
-        public async Task<T> FromByteArrayAsync<T>(
-                                                   [NotNull] byte[] value,
-                                                   bool gzipDecompress = false)
-        {
-            if (value == null) throw new ArgumentNullException(nameof(value));
-
-            return await Task.Run(() => FromByteArray<T>(value, gzipDecompress));
         }
     }
 }
