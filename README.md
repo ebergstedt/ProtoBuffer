@@ -71,6 +71,11 @@ T FromByteArray<T>(
 
 ```
 
+# Gzip?
+In ProtoBuffer you may chose to employ Gzip. Your data can be Gzipped before it's serialized into the ProtoBuf format. 
+
+Gzip's purpose is primarily used to compress strings. That is why it's the preferred serialization format for webservers to serve html/javascript/css which are in a string format. If your data contains a lot of strings, then you may see a considerable size compression when using Gzip. Be aware though that Gzip can increase the size of your data should it not contain enough strings.
+
 # Helpful links
 
 **[Protobuf-net: the unofficial manual](http://www.codeproject.com/Articles/642677/Protobuf-net-the-unofficial-manual)**
