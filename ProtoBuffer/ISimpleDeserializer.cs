@@ -16,9 +16,5 @@ namespace ProtoBuffer
         T FromByteArray<T>(
                            [NotNull] byte[] value,
                            bool gzipDecompress = false);
-
-        Task<T> FromByteArrayAsync<T>(
-                                      [NotNull] byte[] value,
-                                      bool gzipDecompress = false);
     }
 }

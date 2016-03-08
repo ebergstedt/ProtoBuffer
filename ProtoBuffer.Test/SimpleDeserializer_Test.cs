@@ -57,22 +57,13 @@ namespace ProtoBuffer.Test
         {
             string path = "ob1.bin";
 
-            _simpleSerializer.SaveToFile(GetObjectWithProtobufContract(), path, gzipCompress: useGzip);
+            var objectWithProtobufContract = GetObjectWithProtobufContract();
+
+            _simpleSerializer.SaveToFile(objectWithProtobufContract, path, gzipCompress: useGzip);
 
             Person person = _simpleDeserializer.FromFile<Person>(path, gzipDecompress: useGzip);
 
-            Assert.NotNull(person);
-        }
-
-        [TestCase(false)]
-        [TestCase(true)]
-        public async Task Given_an_object_Then_protobuf_serialize_deseserialize_async(bool useGzip)
-        {
-            var serialize = await _simpleSerializer.ToByteArrayAsync(GetObjectWithProtobufContract(), gzipCompress: useGzip);
-
-            Person deserialize = await _simpleDeserializer.FromByteArrayAsync<Person>(serialize, gzipDecompress: useGzip);
-
-            Assert.NotNull(deserialize);
+            Assert.True(person.Id == objectWithProtobufContract.Id);
         }
 
         [TestCase(false)]
@@ -81,11 +72,13 @@ namespace ProtoBuffer.Test
         {
             string path = "ob2.bin";
 
-            await _simpleSerializer.SaveToFileAsync(GetObjectWithProtobufContract(), path, gzipCompress: useGzip);
+            var objectWithProtobufContract = GetObjectWithProtobufContract();
+
+            await _simpleSerializer.SaveToFileAsync(objectWithProtobufContract, path, gzipCompress: useGzip);
 
             Person person = await _simpleDeserializer.FromFileAsync<Person>(path, gzipDecompress: useGzip);
-
-            Assert.NotNull(person);
+            
+            Assert.True(person.Id == objectWithProtobufContract.Id);            
         }
     }
 }
