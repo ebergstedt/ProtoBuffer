@@ -2,7 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
+
 using ProtoBuf;
 
 namespace ProtoBuffer
@@ -20,10 +20,10 @@ namespace ProtoBuffer
         /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>Saved filepath</returns>
         public string SaveToFile(
-                                 [NotNull] object item,
-                                 [NotNull] string filePath,
-                                 FileMode fileMode = FileMode.Create,
-                                 bool gzipCompress = false)
+            object item,
+            string filePath,
+            FileMode fileMode = FileMode.Create,
+            bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
@@ -47,10 +47,10 @@ namespace ProtoBuffer
         /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>Saved filepath</returns>
         public async Task<string> SaveToFileAsync(
-                                                  [NotNull] object item,
-                                                  [NotNull] string filePath,
-                                                  FileMode fileMode = FileMode.Create,
-                                                  bool gzipCompress = false)
+            object item,
+            string filePath,
+            FileMode fileMode = FileMode.Create,
+            bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
@@ -69,14 +69,14 @@ namespace ProtoBuffer
         }
 
         /// <summary>
-        ///     Transforms item to protobuf string
+        ///     Transforms item to protobuf byte array
         /// </summary>
         /// <param name="item">Item to be serialized</param>
         /// <param name="gzipCompress">Use gzip compression</param>
         /// <returns>String serialization of the item</returns>
         public byte[] ToByteArray(
-                                  [NotNull] object item,
-                                  bool gzipCompress = false)
+            object item,
+            bool gzipCompress = false)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
@@ -97,6 +97,15 @@ namespace ProtoBuffer
 
                 return ms.ToArray();
             }
+        }
+
+        public string ToStringValue(
+            object item,
+            bool gzipCompress = false)
+        {
+            return Convert.ToBase64String(
+                ToByteArray(item, 
+                gzipCompress));
         }
     }
 }

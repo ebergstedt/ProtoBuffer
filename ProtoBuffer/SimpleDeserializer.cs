@@ -2,13 +2,13 @@
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
+
 using ProtoBuf;
 
 namespace ProtoBuffer
 {
     public class SimpleDeserializer : ISimpleDeserializer
-    {        
+    {
         /// <summary>
         ///     Deserializes from file
         /// </summary>
@@ -17,8 +17,8 @@ namespace ProtoBuffer
         /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
         /// <returns>File deserialized into type</returns>
         public T FromFile<T>(
-                             [NotNull] string filePath,
-                             bool gzipDecompress = false)
+            string filePath,
+            bool gzipDecompress = false)
         {
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 
@@ -35,8 +35,8 @@ namespace ProtoBuffer
         /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
         /// <returns>File deserialized into type</returns>
         public async Task<T> FromFileAsync<T>(
-                                              [NotNull] string filePath,
-                                              bool gzipDecompress = false)
+            string filePath,
+            bool gzipDecompress = false)
         {
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
 
@@ -67,8 +67,8 @@ namespace ProtoBuffer
         /// <param name="gzipDecompress">Use gzip decompression, if your data is serialized with gzip</param>
         /// <returns>Byte-array deserialized into type</returns>
         public T FromByteArray<T>(
-                                  [NotNull] byte[] value,
-                                  bool gzipDecompress = false)
+            byte[] value,
+            bool gzipDecompress = false)
         {
             if (value == null) throw new ArgumentNullException(nameof(value));
 
@@ -84,6 +84,17 @@ namespace ProtoBuffer
 
                 return Serializer.Deserialize<T>(ms);
             }
+        }
+
+        public T FromStringValue<T>(
+            string value,
+            bool gzipDecompress = false)
+        {
+            if (string.IsNullOrEmpty(value)) throw new ArgumentNullException(nameof(value));            
+
+            return FromByteArray<T>(
+                Convert.FromBase64String(value), 
+                gzipDecompress);
         }
     }
 }

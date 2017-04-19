@@ -42,7 +42,18 @@ namespace ProtoBuffer.Test
 
         [TestCase(false)]
         [TestCase(true)]
-        public void Given_an_object_Then_protobuf_serialize_and_deseserialize(bool useGzip)
+        public void Given_an_object_Then_protobuf_serialize_and_deseserialize_with_byte(bool useGzip)
+        {
+            var serialize = _simpleSerializer.ToStringValue(GetObjectWithProtobufContract(), gzipCompress: useGzip);
+
+            Person deserialize = _simpleDeserializer.FromStringValue<Person>(serialize, gzipDecompress: useGzip);
+
+            Assert.NotNull(deserialize);
+        }
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void Given_an_object_Then_protobuf_serialize_and_deseserialize_with_string(bool useGzip)
         {
             var serialize = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract(), gzipCompress: useGzip);
 

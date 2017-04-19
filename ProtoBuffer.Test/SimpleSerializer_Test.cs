@@ -40,9 +40,18 @@ namespace ProtoBuffer.Test
 
         [TestCase(false)]
         [TestCase(true)]
-        public void Given_an_object_Then_get_its_protobuf_serialize(bool useGzip)
+        public void Given_an_object_Then_get_its_byte_protobuf_serialize(bool useGzip)
         {
             byte[] serialized = _simpleSerializer.ToByteArray(GetObjectWithProtobufContract(), gzipCompress: useGzip);            
+
+            Assert.NotNull(serialized);
+        }
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void Given_an_object_Then_get_its_string_protobuf_serialize(bool useGzip)
+        {
+            string serialized = _simpleSerializer.ToStringValue(GetObjectWithProtobufContract(), gzipCompress: useGzip);
 
             Assert.NotNull(serialized);
         }
