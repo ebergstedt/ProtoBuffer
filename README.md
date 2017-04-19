@@ -22,14 +22,15 @@ The test files are self-explanatory. Click below to go to the test files.
 Here is a sample:
 
 ```C#
-[Test]
-public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
+[TestCase(false)]
+[TestCase(true)]
+public void Given_an_object_Then_protobuf_serialize_and_deseserialize_with_byte(bool useGzip)
 {
-    var serialize = _simpleSerializer.ToByteArray(GetPerson());
+    var serialize = _simpleSerializer.ToStringValue(GetObjectWithProtobufContract(), gzipCompress: useGzip);
 
-    Person deserialize = _simpleDeserializer.FromByteArray<Person>(serialize);
+    Person deserialize = _simpleDeserializer.FromStringValue<Person>(serialize, gzipDecompress: useGzip);
 
-    Assert.NotNull(deserialize); // true!
+    Assert.NotNull(deserialize); // True !!
 }
 ```
 
@@ -38,37 +39,43 @@ public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 ## Protobuffer.SimpleSerializer
 ```C#
 string SaveToFile(
-    [NotNull] object item,
-    [NotNull] string filePath,
+    object item,
+    string filePath,
     FileMode fileMode = FileMode.Create,
     bool gzipCompress = false);
 
 Task<string> SaveToFileAsync(
-    [NotNull] object item, 
-    [NotNull] string filePath, 
-    FileMode fileMode = FileMode.Create,
+    object item, 
+    string filePath,
+    FileMode fileMode = FileMode.Create, 
     bool gzipCompress = false);
 
 byte[] ToByteArray(
-    [NotNull] object item,
+    object item,
     bool gzipCompress = false);
-     
+
+string ToStringValue(
+    object item,
+    bool gzipCompress = false);
 ```
 
 ## Protobuffer.SimpleDeserializer
 ```C#
 T FromFile<T>(
-    [NotNull] string filePath, 
+    string filePath, 
     bool gzipDecompress = false);
 
 Task<T> FromFileAsync<T>(
-    [NotNull] string filePath,
+    string filePath,
     bool gzipDecompress = false);
 
 T FromByteArray<T>(
-    [NotNull] byte[] value,
+    byte[] value,
     bool gzipDecompress = false);
 
+T FromStringValue<T>(
+    string value,
+    bool gzipDecompress = false);
 ```
 
 # Gzip?
