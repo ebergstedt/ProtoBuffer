@@ -38,36 +38,36 @@ public void Given_an_object_Then_protobuf_serialize_and_deseserialize()
 ## Protobuffer.SimpleSerializer
 ```C#
 string SaveToFile(
-				  [NotNull] object item,
-				  [NotNull] string filePath,
-				  FileMode fileMode = FileMode.Create,
-				  bool gzipCompress = false);
+    [NotNull] object item,
+    [NotNull] string filePath,
+    FileMode fileMode = FileMode.Create,
+    bool gzipCompress = false);
 
 Task<string> SaveToFileAsync(
-							 [NotNull] object item, 
-							 [NotNull] string filePath, 
-							 FileMode fileMode = FileMode.Create,
-							 bool gzipCompress = false);
+    [NotNull] object item, 
+    [NotNull] string filePath, 
+    FileMode fileMode = FileMode.Create,
+    bool gzipCompress = false);
 
 byte[] ToByteArray(
-				   [NotNull] object item,
-				   bool gzipCompress = false);
+    [NotNull] object item,
+    bool gzipCompress = false);
      
 ```
 
 ## Protobuffer.SimpleDeserializer
 ```C#
 T FromFile<T>(
-			  [NotNull] string filePath, 
-			  bool gzipDecompress = false);
+    [NotNull] string filePath, 
+    bool gzipDecompress = false);
 
 Task<T> FromFileAsync<T>(
-						 [NotNull] string filePath,
-						 bool gzipDecompress = false);
+    [NotNull] string filePath,
+    bool gzipDecompress = false);
 
 T FromByteArray<T>(
-				   [NotNull] byte[] value,
-				   bool gzipDecompress = false);
+    [NotNull] byte[] value,
+    bool gzipDecompress = false);
 
 ```
 
