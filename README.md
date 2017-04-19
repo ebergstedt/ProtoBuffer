@@ -7,10 +7,6 @@ less boilerplate.
 
 **[Performance report](https://github.com/sidshetye/SerializersCompare)** for ProtoBuf shows that it's one of the fastest serializers for C#. But what ProtoBuf is designed for is unprecedented speed of deserialization, with a very compact format. This makes it a prime candidate for your caching solution, such as using Redis together with ProtoBuf for extremely fast data transfer and deserialization. This is as of 2016 the solution deployed in production at Stack Overflow.
 
-# [Nuget](https://www.nuget.org/packages/ProtoBuffer/)
-
-    PM> Install-Package ProtoBuffer
-
 # Usage
 
 The test files are self-explanatory. Click below to go to the test files.
